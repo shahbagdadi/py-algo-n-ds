@@ -12,7 +12,7 @@ Example 1:
 Input:  n = 4   
 Output: 4  
 
-Explanation:
+Explanation:  
 T_3 = 0 + 1 + 1 = 2  
 T_4 = 1 + 1 + 2 = 4  
    
