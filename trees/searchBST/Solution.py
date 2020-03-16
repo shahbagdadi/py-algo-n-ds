@@ -8,16 +8,12 @@ class TreeNode:
 
 class Solution:
     def searchBST(self, root: TreeNode, val: int) -> TreeNode:
-        if root is None:
-            return None
-        elif root.val == val:
-            return root
-        elif val < root.val:
+        if root and val < root.val:
             return self.searchBST(root.left, val)
-        else:
+        elif root and val > root.val:
             return self.searchBST(root.right, val)
-
-s = Solution()
+        else :
+            return root
 
 import sys
 import os
@@ -26,5 +22,6 @@ from util import drawtree , deserialize
 root = deserialize('[4,2,7,1,3,null,null]')
 # drawtree(root)
 
+s = Solution()
 r = s.searchBST(root,2)
 drawtree(r)
