@@ -23,6 +23,15 @@ def deserialize(string):
                 node.right = kids.pop()
     return root
 
+def serialize(root):
+    def preorder(node):
+        if node:
+            vals.append(str(node.val))
+            preorder(node.left)
+            preorder(node.right)
+    vals = []
+    preorder(root)
+    return ' '.join(vals)
 
 def drawtree(root):
     def height(root):
