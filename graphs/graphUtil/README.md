@@ -12,3 +12,4 @@ Create a graph class which supports the following operations
 
 [Adjacency List Graph](./GraphAdjList.py)
 
+[Adjacency Matrix Graph](./GraphAdjMat.py)
