@@ -6,21 +6,29 @@ To represent a cycle in the given linked list, we use an integer pos which repre
 
 Note: Do not modify the linked list.    
 
+![example1](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png)
  <pre><code>
 
 Example 1:
-
 Input: head = [3,2,0,-4], pos = 1
 Output: tail connects to node index 1
 Explanation: There is a cycle in the linked list, where tail connects to the second node.
 
+</code></pre>
 
+![example2](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png)
+
+<pre><code>
 Example 2:
 
 Input: head = [1,2], pos = 0
 Output: tail connects to node index 0
 Explanation: There is a cycle in the linked list, where tail connects to the first node.
+</code></pre>
 
+![example3](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png)
+
+<pre><code>
 
 Example 3:
 
