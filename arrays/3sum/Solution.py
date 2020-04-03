@@ -1,12 +1,14 @@
 
 from typing import List
 
+# T - O(n * n)    S - O(1)
+
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         res = []
         nums.sort()                                 # nlog(n)
-        for i in range(len(nums)-2):
+        for i in range(len(nums)-2):                # n * n (for loop & while)
             if i > 0 and nums[i] == nums[i-1]:      # skip if num same as prev num
                 continue
             l, r = i+1, len(nums)-1
