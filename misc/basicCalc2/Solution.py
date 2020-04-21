@@ -16,26 +16,25 @@ class Solution:
         
         stack = []
         num, op = 0, '+'
-        for i in range(len(s)):
-            if s[i].isdigit():
-                num = num * 10 + int(s[i])
-            elif s[i] in ('+', '-', '*', '/', ')'):
+        for c in s:
+            if c.isdigit():
+                num = num * 10 + int(c)
+            elif c in ('+', '-', '*', '/', ')'):
                 update(op, num)
-                if s[i] == ')':
+                if c == ')':
                     num = 0
                     print(stack)
                     while isinstance(stack[-1], int):
                         num += stack.pop() 
                     op = stack.pop()
                     update(op, num)
-                num, op = 0, s[i]
-            elif s[i] == '(':
+                num, op = 0, c
+            elif c == '(':
                 stack.append(op)
                 num, op = 0, '+'
         update(op, num)
         return sum(stack)
-        
 
 s = Solution()
-ans = s.calculate('(1+(4+5+2)-3)+(6+8)')
+ans = s.calculate('2 * (15 - 5 + 2) / 3')
 print(ans)
