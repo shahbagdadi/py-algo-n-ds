@@ -16,17 +16,17 @@ class Solution:
             else:
                 if len(w1) > len(w2): return ""
 
-        queue = [ x for x in degree.keys() if degree[x] == 0]
+        lst_no_dep = [ x for x in degree.keys() if degree[x] == 0]
 
         # Topological sort
         stk = []
-        while queue:
-            ch = queue.pop()
+        while lst_no_dep:
+            ch = lst_no_dep.pop()
             stk.append(ch)
             for ch_greater in graph[ch]:
                 degree[ch_greater] -= 1
-                if not degree[ch_greater]:
-                    queue.append(ch_greater)
+                if degree[ch_greater] == 0:
+                    lst_no_dep.append(ch_greater)
 
         return ''.join(stk) if len(stk) == len(degree) else ''
 
