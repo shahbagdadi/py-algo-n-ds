@@ -18,7 +18,7 @@ class Solution:
         return dp[n][W]
 
     #  T - O(2^n)    S - O(n)
-    #  lru_cache T - O(N * N)    S - O(N)
+    #  lru_cache T - O(n * w)    S - O(n * w)
     def knapSackR(self, wt: List, val: List, W: int) -> int:
         # @lru_cache(None)
         def helper( W, n):
@@ -31,7 +31,7 @@ class Solution:
             return max(sum1, sum2)
         return helper(W, len(wt))
 
-
+    #  lru_cache T - O(n * w)    S - O(n * w)
     def knapSackRUnbound(self, wt: List, val: List, W: int) -> int:
         @lru_cache(None)
         def helper( W, n):
