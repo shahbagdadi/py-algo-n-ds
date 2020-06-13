@@ -1,7 +1,6 @@
 from typing import List
 
 class Solution :
-
  def convertToString(self, A : List[str]) -> str :
     meta_data = ','.join([str(len(s)) for s in A])
     return meta_data + '|' + ''.join(A) 
@@ -20,5 +19,4 @@ s = Solution()
 ip = ['hel,lo', 'hi' , '' , 'b|ye']
 ans1 = s.convertToString(ip)
 print(ans1)
-ans2 = s.convertBackToArray(ans1)
-print(ans2)
+print(s.convertBackToArray(ans1))
