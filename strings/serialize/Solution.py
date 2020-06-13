@@ -9,9 +9,8 @@ class Solution :
  def convertBackToArray(self, encoded : str) -> List[str] :
     meta_data , sep , data = encoded.partition('|')
     if not meta_data : return []
-    mdata = [ int(s) for s in meta_data.split(',')]
     s , decoded = 0 , []
-    for l in mdata:
+    for l in [ int(s) for s in meta_data.split(',') ] :
         decoded.append(data[s:s+l])
         s += l
     return decoded
