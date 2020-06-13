@@ -10,9 +10,10 @@ class Solution :
     meta_data , sep , data = encoded.partition('|')
     if not meta_data : return []
     s , decoded = 0 , []
-    for l in [ int(s) for s in meta_data.split(',') ] :
-        decoded.append(data[s:s+l])
-        s += l
+    for l in meta_data.split(',') :
+        i = int(l)
+        decoded.append(data[s:s+i])
+        s += i
     return decoded
 
 s = Solution()
