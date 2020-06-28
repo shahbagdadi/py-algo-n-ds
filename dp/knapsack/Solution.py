@@ -11,7 +11,7 @@ class Solution:
             for w in range(W + 1):                              # Loop 2
                 if n == 0 or w == 0:                            # base cond
                     dp[n][w] = 0
-                elif wt[n-1] <= w:
+                elif w >= wt[n-1] :
                     dp[n][w] = max(val[n-1] + dp[n-1][w-wt[n-1]], dp[n-1][w])
                 else:
                     dp[n][w] = dp[n-1][w]
