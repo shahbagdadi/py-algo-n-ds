@@ -5,7 +5,7 @@ class Solution:
 
     # T - O(n * w)    S - O(n * w)
     def knapSackDP(self, wt: List, val: List, W: int) -> int:
-        dp = [[0 for x in range(W + 1)] for x in range(len(wt) + 1)]  # init DP
+        dp = [[0] * (W + 1) for _ in range(len(wt) + 1)]  # init DP
         # Table in bottom up manner
         for n in range(len(wt) + 1):                            # Loop 1
             for w in range(W + 1):                              # Loop 2
