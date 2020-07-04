@@ -8,6 +8,6 @@ moment that the tourists want to see as many attractions as possible.
 The tourists are allowed to move either to the south or to the east, but even so,
 they can choose from many different paths
 
-![](./image/tourist2.jpg
-)
+![](./image/tourist2.jpg)  
+
 Find the maximum number of attractions they can see and the path to see the maximum attractions.
