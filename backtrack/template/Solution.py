@@ -1,17 +1,17 @@
 
 class Solution:
 
-    def subsets(self, nums):
-        def backtrack(start, end, tmp):
+    def subsets(self, A):
+        def backtrack(s, e, tmp):
             ans.append(tmp[:])
-            for i in range(start, end):
+            for i in range(s, e):
                 # if i > start and nums[i] == nums[i-1]: continue  # if dups in nums
-                tmp.append(nums[i])
-                backtrack(i+1, end, tmp)
+                tmp.append(A[i])
+                backtrack(i+1, e, tmp)
                 tmp.pop()
         ans = []
         # nums.sort()                                               # if dups in nums
-        backtrack(0, len(nums), [])
+        backtrack(0, len(A), [])
         return ans
 
     # same as subsets above
@@ -19,16 +19,16 @@ class Solution:
         if l == []: return [[]]    
         return self.combinations(l[1:]) + [[l[0]] + c for c in self.combinations(l[1:])]
 
-    def permute(self, nums):
-        def backtrack(start, end):
-            if start == end:
-                ans.append(nums[:])
-            for i in range(start, end):
-                nums[start], nums[i] = nums[i], nums[start]
-                backtrack(start+1, end)
-                nums[start], nums[i] = nums[i], nums[start]       
+    def permute(self, A):
+        def backtrack(s, e):
+            if s == e:
+                ans.append(A[:])
+            for i in range(s, e):
+                A[s], A[i] = A[i], A[s]
+                backtrack(s+1, e)
+                A[s], A[i] = A[i], A[s]       
         ans = []
-        backtrack(0, len(nums))
+        backtrack(0, len(A))
         return ans
 
 
