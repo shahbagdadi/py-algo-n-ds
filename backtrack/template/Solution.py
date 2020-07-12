@@ -1,6 +1,7 @@
 
 class Solution:
 
+    # T - O(N × 2^N)  S - O(N × 2^N)  
     def subsets(self, A):
         def backtrack(s, e, tmp):
             ans.append(tmp[:])
@@ -19,6 +20,7 @@ class Solution:
         if l == []: return [[]]    
         return self.combinations(l[1:]) + [[l[0]] + c for c in self.combinations(l[1:])]
 
+    # T - O(n*n!)  S - O(n!)
     def permute(self, A):
         def backtrack(s, e):
             if s == e:
