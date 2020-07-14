@@ -1,3 +1,7 @@
+from typing import Deque
+from collections import deque
+import turtle
+
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -5,14 +9,13 @@ class TreeNode:
         self.right = right
 
     def __repr__(self):
-        return 'TreeNode({})'.format(self.val)
+        return f'TreeNode({self.val})'
 
 
-def deserialize(string):
-    if string == '{}':
-        return None
+def deserialize(data):
+    if not data : return None
     nodes = [None if val == 'null' else TreeNode(int(val))
-             for val in string.strip('[]{}').split(',')]
+             for val in data.strip('[]').split(',')]
     kids = nodes[::-1]
     root = kids.pop()
     for node in nodes:
@@ -23,15 +26,19 @@ def deserialize(string):
                 node.right = kids.pop()
     return root
 
+
 def serialize(root):
-    def preorder(node):
+    q , ans = deque([root]), []
+    while q:
+        node = q.popleft()
         if node:
-            vals.append(str(node.val))
-            preorder(node.left)
-            preorder(node.right)
-    vals = []
-    preorder(root)
-    return ' '.join(vals)
+            ans.append(str(node.val))
+            q.append(node.left)
+            q.append(node.right)
+        else :
+            ans.append('null')
+    return '[' + ','.join(ans) + ']'
+
 
 def drawtree(root):
     def height(root):
@@ -50,7 +57,8 @@ def drawtree(root):
             draw(node.left, x-dx, y-60, dx/2)
             jumpto(x, y-20)
             draw(node.right, x+dx, y-60, dx/2)
-    import turtle
+
+
     t = turtle.Turtle()
     t.speed(0)
     turtle.delay(0)
@@ -62,6 +70,5 @@ def drawtree(root):
 
 
 if __name__ == '__main__':
-    drawtree(deserialize('[1,2,3,null,null,4,null,null,5]'))
-    drawtree(deserialize(
-        '[2,1,3,0,7,9,1,2,null,1,0,null,null,8,8,null,null,null,null,7]'))
+    drawtree(deserialize('[4,2,5,1,3,null,null]'))
+
