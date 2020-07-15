@@ -10,22 +10,21 @@ class TreeNode:
 
     def __repr__(self):
         return f'TreeNode({self.val})'
-
+        
 
 def deserialize(data):
     if not data : return None
     nodes = [None if val == 'null' else TreeNode(int(val))
-             for val in data.strip('[]').split(',')]
-    kids = nodes[::-1]
-    root = kids.pop()
-    for node in nodes:
-        if node:
-            if kids:
-                node.left = kids.pop()
-            if kids:
-                node.right = kids.pop()
-    return root
-
+            for val in data.strip('[]').split(',')]
+    i, N = 0, len(nodes)
+    while 2*i < N:
+        if nodes[i] :
+            if 2*i +1 < N and nodes[2*i +1] :
+                nodes[i].left = nodes[2*i +1]
+            if 2*i +2 < N and nodes[2*i +2] :
+                nodes[i].right = nodes[2*i +2]
+        i +=1
+    return nodes[0]
 
 def serialize(root):
     q , ans = deque([root]), []
@@ -70,5 +69,7 @@ def drawtree(root):
 
 
 if __name__ == '__main__':
-    drawtree(deserialize('[4,2,5,1,3,null,null]'))
+    root = deserialize('[4,2,5,1,3,6,null,9,null,null,null,11,null]')
+    drawtree(root)
+    print(serialize(root))
 
