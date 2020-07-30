@@ -16,9 +16,9 @@ class Solution:
 
 
 s = Solution()
-ip = [[2,4,6,8],
-[3,5,7,12],
-[9,10,13],
-[1]]
+ip = [  [2,4,6,8],
+        [3,5,7,12],
+        [9,10,13],
+        [1]]
 ans = s.KListSort(ip)
 print(ans)
