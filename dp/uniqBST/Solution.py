@@ -1,5 +1,7 @@
+from functools import lru_cache
+
 class Solution:
-    def numTrees(self, N : int) -> int:
+    def numTreesDP(self, N : int) -> int:
         '''
             For an array [1,2,3,4,5] the number of BST's we can form at each node say '3' is the
             the number of BST that can be formed with permutation of [1,2] on the left and [4,5] on the right
@@ -23,6 +25,37 @@ class Solution:
             for j in range(1, n+1):
                 G[n] += G[j-1] * G[n-j]
         return G[N]
+
+    def numTreesMemo(self, n):
+        def countTrees(n, cache):
+            if n == 0: return 1
+            if cache[n] != -1: # -1 means we don't know countTrees(n) yet.
+                return cache[n]
+            Result = 0
+            for i in range(n):
+                LeftTrees = countTrees(i, cache)
+                RightTrees = countTrees(n - i - 1, cache)
+                Result += LeftTrees * RightTrees
+            cache[n] = Result
+            return Result
+        
+        cache1=[-1 for _ in range(n+1)]
+        return countTrees(n, cache1)
+
+    def numTrees(self, n):
+        @lru_cache(None)
+        def countTrees(n):
+            if n == 0: return 1
+            Result = 0
+            for i in range(n):
+                LeftTrees = countTrees(i)
+                RightTrees = countTrees(n - i - 1)
+                Result += LeftTrees * RightTrees
+            return Result
+        
+        cache1=[-1 for _ in range(n+1)]
+        return countTrees(n)   
+    
         
 
 s = Solution()
