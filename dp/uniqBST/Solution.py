@@ -52,8 +52,6 @@ class Solution:
                 RightTrees = countTrees(n - i - 1)
                 Result += LeftTrees * RightTrees
             return Result
-        
-        cache1=[-1 for _ in range(n+1)]
         return countTrees(n)   
     
         
