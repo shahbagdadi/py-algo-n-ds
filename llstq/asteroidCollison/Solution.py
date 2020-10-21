@@ -22,17 +22,16 @@ class Solution:
 
     def asteroidCollision(self, asteroids):
         stack = []
-        for new in asteroids:
-            while stack and new < 0 < stack[-1]:
-                if stack[-1] < -new:
+        for num in asteroids:
+            if num>0:
+                stack.append(num)
+            else:
+                while stack and stack[-1]>0 and stack[-1]<abs(num):
                     stack.pop()
-                    continue
-                elif stack[-1] == -new:
+                if not stack or stack[-1]<0:
+                    stack.append(num)
+                elif stack[-1] == -num:
                     stack.pop()
-                break
-            else:   # exceuted when while loop is false and break not executed. 
-                stack.append(new)
-                print(stack)
         return stack
 
 s = Solution()
