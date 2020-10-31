@@ -27,7 +27,22 @@ class Solution:
                 # p = node.left           # PostOrder - Reverse the traversal process of preorder
         return ans
 
+    def inorderMorris(self, root):
+            cur = root
+            while cur:
+                if cur.left:
+                    temp = cur.left
+                    while temp.right and temp.right != cur: temp = temp.right
+                    if not temp.right:
+                        temp.right, cur = cur, cur.left
+                        continue
+                    temp.right = None
+                print(cur.val)
+                cur = cur.right
+
 s = Solution()
-root = deserialize('[1,null,2,3]')
+root = deserialize('[5,2,6,null,3,null,7]')
 # drawtree(root)
 print(s.traverse(root))
+s.inorderMorris(root)
+drawtree(root)
