@@ -8,6 +8,7 @@ class Solution:
         @lru_cache
         def get_sink(r,c):
             sr , sc = r , c
+            visited.add((r,c))
             for r1,c1 in [(r,c-1),(r,c+1),(r-1,c),(r+1,c)] : # find my lowest neighbor
                 if 0<=r1<m and 0<=c1<n and mat[r1][c1] < mat[sr][sc] :
                     sr , sc = r1, c1
