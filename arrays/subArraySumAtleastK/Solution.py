@@ -5,7 +5,6 @@ from itertools import accumulate
 class Solution:
     def minWinSum(self,nums,K) :
         rsum , ans , L = list(accumulate(nums)) , float("inf") , len(nums)
-        # print(rsum)
         for s in range(L) :
             for e in range(s,L) :
                 if K >=0 and rsum[e] - rsum[s] >= K :

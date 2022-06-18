@@ -1,6 +1,6 @@
 ## Sub array sum greater than or equal to K
 
-Given an array of integers and an integer k, you need to find the size of the smallest continuous subarrays whose sum equalsis equal to or greater than K.
+Given an array of integers and an integer k, you need to find the size of the smallest continuous subarrays whose sum is equal to or greater than K.
 ```
 Example 1:
 Input:nums = [-1,4, -1], k = 4
